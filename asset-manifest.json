@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/notiesChalenge/static/css/main.874c8069.css",
+    "main.js": "/notiesChalenge/static/js/main.b01bbae2.js",
+    "index.html": "/notiesChalenge/index.html",
+    "main.874c8069.css.map": "/notiesChalenge/static/css/main.874c8069.css.map",
+    "main.b01bbae2.js.map": "/notiesChalenge/static/js/main.b01bbae2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.874c8069.css",
+    "static/js/main.b01bbae2.js"
+  ]
+}
