@@ -24,7 +24,7 @@ const Input: FC<IPropsInput> = ({ setNoties, noties }): JSX.Element => {
 
 	const handleChange = (e: React.KeyboardEvent): void => {
 		if (e.key === "Enter") {
-			dispatch(getNoties(noties));
+			dispatch(getNoties(notiesItem));
 		}
 	};
 

@@ -7,7 +7,7 @@ import { inlineNumber, inlineString, IPropsMapping } from "types";
 
 
 
-const NotiesLayout = () => {
+const NotiesLayout = ({setNoties}:any) => {
 	const notiesArray = useSelector(noties);
 
 	console.log("notiesArray", notiesArray);
@@ -19,7 +19,8 @@ const NotiesLayout = () => {
 	return (
 		<div className="containerNoties">
 			{notiesArray.map(({id, value}:IPropsMapping) => (
-				<Note key={id} item={value}  />
+				//@-ts-ignore
+				<Note key={id} item={value}  setNoties={setNoties} />
 			))}
 		</div>
 	);

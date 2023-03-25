@@ -11,7 +11,7 @@ const [noties, setNoties] = useState<string>('')
 		<div className="container">
 			<div className="container__content">
 				<Input  setNoties={setNoties} noties={noties}/>
-				<NotiesLayout/>
+				<NotiesLayout setNoties={setNoties} />
 			</div>
 		</div>
 	);
