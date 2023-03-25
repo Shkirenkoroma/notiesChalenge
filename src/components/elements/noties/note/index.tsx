@@ -8,31 +8,31 @@ import { useState } from "react";
 import uuid from "react-uuid";
 const Note: FC<IPropsNote> = ({ item, setNoties }): JSX.Element => {
 	const [edit, setEdit] = useState<inlineBoolean>(false);
-	
-	const [valueEdit, setValueEdit] = useState<inlineString>('');
+
+	const [valueEdit, setValueEdit] = useState<inlineString>("");
 
 	const dispatch = useDispatch();
-	console.log("valueEdit", valueEdit);
 
 	const editItem = () => {
 		setEdit(!edit);
 	};
 	const deleteItem = () => {
 		dispatch(deleteNote(item));
+		console.log("deleteNote(key)", deleteNote(item));
 	};
 
 	const notiesItem = {
-		id:uuid(),
-		value:valueEdit
-	}
+		id: uuid(),
+		value: valueEdit,
+	};
 	const saveEdit = (e: any) => {
 		setEdit(!edit);
 		dispatch(getNoties(notiesItem));
 	};
 
-	const handleValue = (e:any) => {
-		setValueEdit(e.target.value)
-	}
+	const handleValue = (e: any) => {
+		setValueEdit(e.target.value);
+	};
 
 	return (
 		<div className="container__note">

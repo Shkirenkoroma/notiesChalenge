@@ -4,7 +4,7 @@ export type inlineBoolean = boolean;
 
 export interface IPropsInput {
    setNoties:(e:inlineString) => void,
-   noties:inlineString,
+   notiesData:inlineString,
 }
 
 export interface IPropsButton {
@@ -21,6 +21,7 @@ export interface IState {
 export interface IPropsNote {
    item:inlineString,
    setNoties:(e:inlineString)=>void,
+   key:inlineNumber
 }
 export interface IPropsMapping {
    id:inlineNumber,

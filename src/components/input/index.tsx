@@ -3,23 +3,29 @@ import { FC } from "react";
 import { IPropsInput } from "types";
 import Button from "components/button";
 import { getNoties } from "redux/reducers";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import uuid from "react-uuid";
+import { noties } from "redux/selectors";
 
-const Input: FC<IPropsInput> = ({ setNoties, noties }): JSX.Element => {
+const Input: FC<IPropsInput> = ({ setNoties, notiesData }): JSX.Element => {
 	const handleNoties = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		setNoties(e.target.value);
 	};
 	const dispatch = useDispatch();
+	const notiesArray = useSelector(noties);
 
 
-	const notiesItem = {
-		id:uuid(),
-		value:noties
-	}
+const notiesItem = {
+	id: uuid(),
+	value: notiesData,
+};
 	const saveNoties = () => {
-		dispatch(getNoties(notiesItem));
-		console.log("action", getNoties(noties));
+		console.log('notiesData', notiesData)
+		
+		let  isSameNote = notiesArray.some((item:any) => item.value ===  notiesData);
+		if (!isSameNote) {
+			dispatch(getNoties(notiesItem));
+		}
 	};
 
 	const handleChange = (e: React.KeyboardEvent): void => {
@@ -30,7 +36,7 @@ const Input: FC<IPropsInput> = ({ setNoties, noties }): JSX.Element => {
 
 	return (
 		<>
-			<input type="text" onChange={handleNoties} 	onKeyPress={handleChange}/>
+			<input type="text" onChange={handleNoties} onKeyPress={handleChange} />
 			<Button
 				handleFunction={saveNoties}
 				className="button"
