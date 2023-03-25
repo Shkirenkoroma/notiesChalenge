@@ -4,14 +4,21 @@ import { IPropsInput } from "types";
 import Button from "components/button";
 import { getNoties } from "redux/reducers";
 import { useDispatch } from "react-redux";
+import uuid from "react-uuid";
 
 const Input: FC<IPropsInput> = ({ setNoties, noties }): JSX.Element => {
 	const handleNoties = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		setNoties(e.target.value);
 	};
 	const dispatch = useDispatch();
+
+
+	const notiesItem = {
+		id:uuid(),
+		value:noties
+	}
 	const saveNoties = () => {
-		dispatch(getNoties(noties));
+		dispatch(getNoties(notiesItem));
 		console.log("action", getNoties(noties));
 	};
 

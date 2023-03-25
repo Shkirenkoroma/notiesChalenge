@@ -20,3 +20,7 @@ export interface IState {
 export interface IPropsNote {
    item:inlineString,
 }
+export interface IPropsMapping {
+   id:inlineNumber,
+   value:inlineString
+}
