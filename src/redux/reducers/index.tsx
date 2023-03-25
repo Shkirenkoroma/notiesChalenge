@@ -6,13 +6,15 @@ const notiesSlice = createSlice({
       noties:[],
    },
    reducers:{
-      setNoties:(state, action) => {
-         state.noties = action.payload
+      getNoties:(state, action) => {
+         console.log('action in slice', action)
+         //@ts-ignore
+         state.noties.push(action.payload)
       }
    }
 })
 
 export const notiesReducer = notiesSlice.reducer;
 export const {
-   setNoties
+   getNoties
 } = notiesSlice.actions
