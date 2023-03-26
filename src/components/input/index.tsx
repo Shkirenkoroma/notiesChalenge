@@ -1,5 +1,5 @@
 import "./style.less";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { IPropsInput } from "types";
 import Button from "components/button";
 import { getNoties } from "redux/reducers";
@@ -7,30 +7,43 @@ import { useDispatch, useSelector } from "react-redux";
 import uuid from "react-uuid";
 import { noties } from "redux/selectors";
 
-const Input: FC<IPropsInput> = ({ setNoties, notiesData }): JSX.Element => {
+const Input: FC<IPropsInput> = ({
+	setNoties,
+	notiesData,
+	setActiveModal,
+	activeModal,
+	error,
+	setError,
+}): JSX.Element => {
 	const handleNoties = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		setNoties(e.target.value);
 	};
 	const dispatch = useDispatch();
 	const notiesArray = useSelector(noties);
 
-
-const notiesItem = {
-	id: uuid(),
-	value: notiesData,
-};
+	const notiesItem = {
+		id: uuid(),
+		value: notiesData,
+	};
 	const saveNoties = () => {
-		console.log('notiesData', notiesData)
-		
-		let  isSameNote = notiesArray.some((item:any) => item.value ===  notiesData);
-		if (!isSameNote) {
+		console.log("notiesData", notiesData);
+
+		let isSameNote = notiesArray.some((item: any) => item.value === notiesData);
+		if (!isSameNote && !!notiesData) {
 			dispatch(getNoties(notiesItem));
-		}
+		} else if (!!isSameNote) {
+			setActiveModal(!activeModal);
+		} else setError(!error);
 	};
 
 	const handleChange = (e: React.KeyboardEvent): void => {
+		let isSameNote = notiesArray.some((item: any) => item.value === notiesData);
 		if (e.key === "Enter") {
-			dispatch(getNoties(notiesItem));
+			if (!isSameNote && !!notiesData) {
+				dispatch(getNoties(notiesItem));
+			} else if (!!isSameNote) {
+				setActiveModal(!activeModal);
+			} else setError(!error);
 		}
 	};
 

@@ -6,7 +6,11 @@ import { useDispatch } from "react-redux";
 import { deleteNote, getNoties } from "redux/reducers";
 import { useState } from "react";
 import uuid from "react-uuid";
-const Note: FC<IPropsNote> = ({ item, setNoties }): JSX.Element => {
+const Note: FC<IPropsNote> = ({
+	item,
+	setNoties,
+	activeModal,
+}): JSX.Element => {
 	const [edit, setEdit] = useState<inlineBoolean>(false);
 
 	const [valueEdit, setValueEdit] = useState<inlineString>("");
@@ -36,6 +40,7 @@ const Note: FC<IPropsNote> = ({ item, setNoties }): JSX.Element => {
 
 	return (
 		<div className="container__note">
+		
 			{edit ? (
 				<input onChange={handleValue} />
 			) : (
