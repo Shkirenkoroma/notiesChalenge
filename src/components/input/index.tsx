@@ -4,7 +4,6 @@ import { IPropsInput } from "types";
 import Button from "components/button";
 import { getNoties } from "redux/reducers";
 import { useDispatch, useSelector } from "react-redux";
-import uuid from "react-uuid";
 import { noties } from "redux/selectors";
 
 const Input: FC<IPropsInput> = ({
@@ -22,12 +21,10 @@ const Input: FC<IPropsInput> = ({
 	const notiesArray = useSelector(noties);
 
 	const notiesItem = {
-		id: uuid(),
+		id: Math.random(),
 		value: notiesData,
 	};
 	const saveNoties = () => {
-		console.log("notiesData", notiesData);
-
 		let isSameNote = notiesArray.some((item: any) => item.value === notiesData);
 		if (!isSameNote && !!notiesData) {
 			dispatch(getNoties(notiesItem));

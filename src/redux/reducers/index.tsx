@@ -12,13 +12,20 @@ const notiesSlice = createSlice({
 			state.noties.push(action.payload);
 		},
 		deleteNote: (state, action) => {
-			console.log("delete iten in action slice", action.payload);
 			state.noties = state.noties.filter(
 				(item: IPropsMapping) => item.value !== action.payload,
+			);
+		},
+
+		saveNoties: (state, action) => {
+			const { id, value }: any = action.payload;
+			//@ts-ignore
+			state.noties = state.noties.map((el: any) =>
+				el.id === id ? { ...el, value: value } : { ...el },
 			);
 		},
 	},
 });
 
 export const notiesReducer = notiesSlice.reducer;
-export const { getNoties, deleteNote } = notiesSlice.actions;
+export const { getNoties, deleteNote, saveNoties } = notiesSlice.actions;

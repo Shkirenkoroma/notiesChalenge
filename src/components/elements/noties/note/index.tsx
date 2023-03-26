@@ -3,46 +3,37 @@ import { FC } from "react";
 import { inlineBoolean, inlineString, IPropsNote } from "types";
 import "./style.less";
 import { useDispatch } from "react-redux";
-import { deleteNote, getNoties } from "redux/reducers";
+import { deleteNote, saveNoties } from "redux/reducers";
 import { useState } from "react";
-import uuid from "react-uuid";
-const Note: FC<IPropsNote> = ({
-	item,
-	setNoties,
-	activeModal,
-}): JSX.Element => {
+
+import EditInput from "components/elements/edit";
+const Note: FC<IPropsNote> = ({ item, specificId }): JSX.Element => {
 	const [edit, setEdit] = useState<inlineBoolean>(false);
-
-	const [valueEdit, setValueEdit] = useState<inlineString>("");
-
+	const [valueEdit, setValueEdit] = useState<inlineString>(item);
 	const dispatch = useDispatch();
 
+	const notiesItem = {
+		id: specificId,
+		value: valueEdit,
+	};
 	const editItem = () => {
 		setEdit(!edit);
 	};
+
 	const deleteItem = () => {
 		dispatch(deleteNote(item));
-		console.log("deleteNote(key)", deleteNote(item));
 	};
 
-	const notiesItem = {
-		id: uuid(),
-		value: valueEdit,
-	};
 	const saveEdit = (e: any) => {
 		setEdit(!edit);
-		dispatch(getNoties(notiesItem));
-	};
-
-	const handleValue = (e: any) => {
-		setValueEdit(e.target.value);
+		//@ts-ignore
+		dispatch(saveNoties(notiesItem));
 	};
 
 	return (
 		<div className="container__note">
-		
 			{edit ? (
-				<input onChange={handleValue} />
+				<EditInput value={valueEdit} onChange={setValueEdit} />
 			) : (
 				<div className="container____content__note">{item}</div>
 			)}
