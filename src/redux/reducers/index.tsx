@@ -5,6 +5,7 @@ const notiesSlice = createSlice({
 	name: "noties",
 	initialState: {
 		noties: [],
+		tags:[],
 	},
 	reducers: {
 		getNoties: (state, action) => {
@@ -16,7 +17,6 @@ const notiesSlice = createSlice({
 				(item: IPropsMapping) => item.value !== action.payload,
 			);
 		},
-
 		saveNoties: (state, action) => {
 			const { id, value }: any = action.payload;
 			//@ts-ignore
@@ -24,8 +24,13 @@ const notiesSlice = createSlice({
 				el.id === id ? { ...el, value: value } : { ...el },
 			);
 		},
+		createTag:(state, action) => {
+			console.log('action in create tag', action)
+			//@ts-ignore
+			state.tags.push(action.payload)
+		}
 	},
 });
 
 export const notiesReducer = notiesSlice.reducer;
-export const { getNoties, deleteNote, saveNoties } = notiesSlice.actions;
+export const { getNoties, deleteNote, saveNoties, createTag } = notiesSlice.actions;

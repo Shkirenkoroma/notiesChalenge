@@ -1,8 +1,8 @@
 import "./style.less";
 import { FC, useState } from "react";
-import { IPropsInput } from "types";
+import { inlineString, IPropsInput } from "types";
 import Button from "components/button";
-import { getNoties } from "redux/reducers";
+import { createTag, getNoties } from "redux/reducers";
 import { useDispatch, useSelector } from "react-redux";
 import { noties } from "redux/selectors";
 
@@ -14,9 +14,20 @@ const Input: FC<IPropsInput> = ({
 	error,
 	setError,
 }): JSX.Element => {
+	const [tag, setTag] = useState<inlineString>("");
+
 	const handleNoties = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		setNoties(e.target.value);
+		setError(false);
+		let localString = e.target.value + "";
+		let splitString = localString.split("#");
+		console.log("newSplitArr", splitString);
+		if (splitString.length > 1) {
+			const newTag = `#${splitString[1]}`;
+			setTag(newTag);
+		} else console.log("пe.target.value", e.target.value);
 	};
+
 	const dispatch = useDispatch();
 	const notiesArray = useSelector(noties);
 
@@ -24,10 +35,14 @@ const Input: FC<IPropsInput> = ({
 		id: Math.random(),
 		value: notiesData,
 	};
+
 	const saveNoties = () => {
 		let isSameNote = notiesArray.some((item: any) => item.value === notiesData);
 		if (!isSameNote && !!notiesData) {
 			dispatch(getNoties(notiesItem));
+			if (!!tag) {
+				dispatch(createTag(tag));
+			}
 		} else if (!!isSameNote) {
 			setActiveModal(!activeModal);
 		} else setError(!error);
@@ -38,6 +53,9 @@ const Input: FC<IPropsInput> = ({
 		if (e.key === "Enter") {
 			if (!isSameNote && !!notiesData) {
 				dispatch(getNoties(notiesItem));
+				if (!!tag) {
+					dispatch(createTag(tag));
+				}
 			} else if (!!isSameNote) {
 				setActiveModal(!activeModal);
 			} else setError(!error);
@@ -46,7 +64,7 @@ const Input: FC<IPropsInput> = ({
 
 	return (
 		<>
-			<input type="text" onChange={handleNoties} onKeyPress={handleChange} />
+			<input className="input" type="text" onChange={handleNoties} onKeyPress={handleChange} />
 			<Button
 				handleFunction={saveNoties}
 				className="button"

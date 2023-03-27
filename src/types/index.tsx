@@ -19,6 +19,7 @@ export interface IPropsButton {
 
 export interface IState {
 	noties: inlineString[];
+	tags: inlineString[];
 }
 
 export interface IPropsNote {

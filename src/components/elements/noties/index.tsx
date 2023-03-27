@@ -1,8 +1,9 @@
-import { noties } from "redux/selectors";
+import { noties, tags } from "redux/selectors";
 import "./style.less";
 import { useSelector } from "react-redux";
 import Note from "./note";
 import { IPropsMapping } from "types";
+import Tag from "./tag";
 
 const NotiesLayout = ({
 	setNoties,
@@ -11,24 +12,31 @@ const NotiesLayout = ({
 	error,
 }: any) => {
 	const notiesArray = useSelector(noties);
+	const tagsArray = useSelector(tags);
 
 	return (
 		<div className="containerNoties">
 			{!!activeModal ? (
 				<div className="error">Возможно уже есть похожая заметка</div>
 			) : null}
-			{!!error ? <div className="errorPage">Введите значение</div> : null}
-			{notiesArray.map((item: IPropsMapping, index: number) => (
-				//@-ts-ignore
-				<Note
-					key={index}
-					item={item.value}
-					specificId={item.id}
-					setNoties={setNoties}
-					setActiveModal={setActiveModal}
-					activeModal={activeModal}
-				/>
-			))}
+			<div>
+				{!!error ? <div className="errorPage">Введите значение</div> : null}
+				<div className="tagBlock">
+					{tagsArray.map((item: any, index: any) => (
+						<Tag key={index} item={item} />
+					))}
+				</div>
+				{notiesArray.map((item: IPropsMapping, index: number) => (
+					<Note
+						key={index}
+						item={item.value}
+						specificId={item.id}
+						setNoties={setNoties}
+						setActiveModal={setActiveModal}
+						activeModal={activeModal}
+					/>
+				))}
+			</div>
 		</div>
 	);
 };
