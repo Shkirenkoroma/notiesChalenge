@@ -19,6 +19,7 @@ const Input: FC<IPropsInput> = ({
 	const handleNoties = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		setNoties(e.target.value);
 		setError(false);
+		setTag("")
 		let localString = e.target.value + "";
 		let splitString = localString.split("#");
 		console.log("newSplitArr", splitString);
