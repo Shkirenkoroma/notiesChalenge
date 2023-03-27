@@ -1,10 +1,10 @@
 import "./style.less";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { inlineString, IPropsInput } from "types";
 import Button from "components/button";
 import { createTag, getNoties } from "redux/reducers";
 import { useDispatch, useSelector } from "react-redux";
-import { noties } from "redux/selectors";
+import { noties, tags } from "redux/selectors";
 
 const Input: FC<IPropsInput> = ({
 	setNoties,
@@ -15,6 +15,7 @@ const Input: FC<IPropsInput> = ({
 	setError,
 }): JSX.Element => {
 	const [tag, setTag] = useState<inlineString>("");
+
 
 	const handleNoties = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		setNoties(e.target.value);
@@ -31,18 +32,28 @@ const Input: FC<IPropsInput> = ({
 
 	const dispatch = useDispatch();
 	const notiesArray = useSelector(noties);
-
+const tagArray = useSelector(tags)
 	const notiesItem = {
 		id: Math.random(),
 		value: notiesData,
 	};
 
+useEffect(()=>{
+	localStorage.setItem('noties',JSON.stringify(notiesArray));
+},[notiesArray])
+
+useEffect(()=>{
+	localStorage.setItem('tags',JSON.stringify(tagArray));
+},[tagArray])
+
 	const saveNoties = () => {
 		let isSameNote = notiesArray.some((item: any) => item.value === notiesData);
 		if (!isSameNote && !!notiesData) {
 			dispatch(getNoties(notiesItem));
+			
 			if (!!tag) {
 				dispatch(createTag(tag));
+				
 			}
 		} else if (!!isSameNote) {
 			setActiveModal(!activeModal);

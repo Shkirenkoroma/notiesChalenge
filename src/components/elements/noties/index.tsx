@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import Note from "./note";
 import { IPropsMapping } from "types";
 import Tag from "./tag";
+import { useEffect } from "react";
 
 const NotiesLayout = ({
 	setNoties,
@@ -13,6 +14,16 @@ const NotiesLayout = ({
 }: any) => {
 	const notiesArray = useSelector(noties);
 	const tagsArray = useSelector(tags);
+
+	useEffect(()=>{
+		const notiesData = localStorage.getItem('noties');
+		console.log('notiesData', notiesData)
+	},[])
+	
+	useEffect(()=>{
+		const tagsData = localStorage.getItem('tags');
+		console.log('tagsData', tagsData)
+	},[])
 
 	return (
 		<div className="containerNoties">
