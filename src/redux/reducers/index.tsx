@@ -5,7 +5,7 @@ const notiesSlice = createSlice({
 	name: "noties",
 	initialState: {
 		noties: [],
-		tags:[],
+		tags: [],
 	},
 	reducers: {
 		getNoties: (state, action) => {
@@ -24,18 +24,21 @@ const notiesSlice = createSlice({
 				el.id === id ? { ...el, value: value } : { ...el },
 			);
 		},
-		createTag:(state, action) => {
-			console.log('action in create tag', action)
+		createTag: (state, action) => {
 			//@ts-ignore
-			state.tags.push(action.payload)
+			if (!state.tags.includes(action.payload)) {
+				//@ts-ignore
+				state.tags.push(action.payload);
+			}
 		},
-		deleteTag:(state, action) => {
+		deleteTag: (state, action) => {
 			state.tags = state.tags.filter(
 				(item: IPropsMapping) => item !== action.payload,
 			);
-		}
+		},
 	},
 });
 
 export const notiesReducer = notiesSlice.reducer;
-export const { getNoties, deleteNote, saveNoties, createTag, deleteTag } = notiesSlice.actions;
+export const { getNoties, deleteNote, saveNoties, createTag, deleteTag } =
+	notiesSlice.actions;

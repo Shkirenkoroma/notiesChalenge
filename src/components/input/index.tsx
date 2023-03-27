@@ -1,5 +1,5 @@
 import "./style.less";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { inlineString, IPropsInput } from "types";
 import Button from "components/button";
 import { createTag, getNoties } from "redux/reducers";
@@ -15,45 +15,36 @@ const Input: FC<IPropsInput> = ({
 	setError,
 }): JSX.Element => {
 	const [tag, setTag] = useState<inlineString>("");
-
-
-	const handleNoties = (e: React.ChangeEvent<HTMLInputElement>): void => {
-		setNoties(e.target.value);
-		setError(false);
-		setTag("")
-		let localString = e.target.value + "";
-		let splitString = localString.split("#");
-		console.log("newSplitArr", splitString);
-		if (splitString.length > 1) {
-			const newTag = `${splitString[1]}`;
-			setTag(newTag);
-		} else console.log("пe.target.value", e.target.value);
-	};
-
-	const dispatch = useDispatch();
 	const notiesArray = useSelector(noties);
-const tagArray = useSelector(tags)
+	const tagsArray = useSelector(tags);
+	const dispatch = useDispatch();
+
 	const notiesItem = {
 		id: Math.random(),
 		value: notiesData,
 	};
 
-useEffect(()=>{
-	localStorage.setItem('noties',JSON.stringify(notiesArray));
-},[notiesArray])
+	const handleNoties = (e: React.ChangeEvent<HTMLInputElement>): void => {
+		setNoties(e.target.value);
+		setError(false);
+		setTag("");
+		let localString = e.target.value + "";
+		let splitString = localString.split("#");
 
-useEffect(()=>{
-	localStorage.setItem('tags',JSON.stringify(tagArray));
-},[tagArray])
+		if (splitString.length > 1) {
+			const newTag = `${splitString[1]}`;
+			setTag(newTag);
+		}
+	};
 
 	const saveNoties = () => {
 		let isSameNote = notiesArray.some((item: any) => item.value === notiesData);
 		if (!isSameNote && !!notiesData) {
 			dispatch(getNoties(notiesItem));
-			
+			localStorage.setItem("noties", JSON.stringify(notiesArray));
 			if (!!tag) {
 				dispatch(createTag(tag));
-				
+				localStorage.setItem("tags", JSON.stringify(tagsArray));
 			}
 		} else if (!!isSameNote) {
 			setActiveModal(!activeModal);
@@ -65,8 +56,10 @@ useEffect(()=>{
 		if (e.key === "Enter") {
 			if (!isSameNote && !!notiesData) {
 				dispatch(getNoties(notiesItem));
+				localStorage.setItem("noties", JSON.stringify(notiesArray));
 				if (!!tag) {
 					dispatch(createTag(tag));
+					localStorage.setItem("tags", JSON.stringify(tagsArray));
 				}
 			} else if (!!isSameNote) {
 				setActiveModal(!activeModal);
@@ -76,7 +69,12 @@ useEffect(()=>{
 
 	return (
 		<>
-			<input className="input" type="text" onChange={handleNoties} onKeyPress={handleChange} />
+			<input
+				className="input"
+				type="text"
+				onChange={handleNoties}
+				onKeyPress={handleChange}
+			/>
 			<Button
 				handleFunction={saveNoties}
 				className="button"

@@ -4,16 +4,19 @@ import { RxCross2 } from "react-icons/rx";
 import { useDispatch } from "react-redux";
 import { deleteTag } from "redux/reducers";
 
-const Tag: FC<any> = ({ item }): JSX.Element => {
+const Tag: FC<any> = ({ item, setSortField }): JSX.Element => {
 	const dispatch = useDispatch();
 	const deleteTagByID = (): void => {
-		console.log("delete tag");
-
 		dispatch(deleteTag(item));
 	};
-
+ 
+	const getSort = () => {
+		setSortField(item)
+	}
+	
 	return (
-		<div className="tagcontainer">
+		<div className="tagcontainer" onClick={getSort}
+		>
 			<div className="tagcontainer__content">{item}</div>
 			<div className="tagcontainer__deleteicon" onClick={deleteTagByID}>
 				<RxCross2 />

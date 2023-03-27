@@ -7,6 +7,7 @@ const Button: FC<IPropsButton> = ({
 	buttonName,
 	handleFunction,
 }): JSX.Element => {
+	
 	return (
 		<button className={className} onClick={handleFunction}>
 			<span className="button__name">{buttonName}</span>

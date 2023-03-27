@@ -17,23 +17,27 @@ const Note: FC<IPropsNote> = ({ item, specificId }): JSX.Element => {
 		id: specificId,
 		value: valueEdit,
 	};
-	const editItem = () => {
+
+	const editItem = (): void => {
 		setEdit(!edit);
 	};
 
-	const deleteItem = () => {
+	const deleteItem = (): void => {
 		dispatch(deleteNote(item));
 	};
 
-	const saveEdit = (e: any) => {
+	const saveEdit = (): void => {
 		setEdit(!edit);
-		//@ts-ignore
 		dispatch(saveNoties(notiesItem));
-		dispatch(createTag(tagValue));
+
+		if (tagValue !== item) {
+			dispatch(createTag(tagValue));
+		}
 	};
 
+
 	return (
-		<div className="container__note">
+		<div className="container__note" >
 			{edit ? (
 				<EditInput
 					value={valueEdit}
