@@ -4,6 +4,7 @@ import { useState } from "react";
 import NotiesLayout from "components/elements/noties";
 import { inlineBoolean, inlineString } from "types";
 
+
 const App = () => {
 	const [noties, setNoties] = useState<inlineString>("");
 	const [activeModal, setActiveModal] = useState<inlineBoolean>(false);
@@ -20,6 +21,7 @@ const App = () => {
 					error={error}
 					setError={setError}
 				/>
+			
 				<NotiesLayout
 					setNoties={setNoties}
 					activeModal={activeModal}

@@ -35,7 +35,6 @@ const Note: FC<IPropsNote> = ({ item, specificId }): JSX.Element => {
 		}
 	};
 
-
 	return (
 		<div className="container__note" >
 			{edit ? (
