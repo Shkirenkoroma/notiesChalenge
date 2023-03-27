@@ -23,7 +23,7 @@ const Input: FC<IPropsInput> = ({
 		let splitString = localString.split("#");
 		console.log("newSplitArr", splitString);
 		if (splitString.length > 1) {
-			const newTag = `#${splitString[1]}`;
+			const newTag = `${splitString[1]}`;
 			setTag(newTag);
 		} else console.log("пe.target.value", e.target.value);
 	};

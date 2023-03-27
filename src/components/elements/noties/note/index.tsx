@@ -3,13 +3,14 @@ import { FC } from "react";
 import { inlineBoolean, inlineString, IPropsNote } from "types";
 import "./style.less";
 import { useDispatch } from "react-redux";
-import { deleteNote, saveNoties } from "redux/reducers";
+import { createTag, deleteNote, saveNoties } from "redux/reducers";
 import { useState } from "react";
 
 import EditInput from "components/elements/edit";
 const Note: FC<IPropsNote> = ({ item, specificId }): JSX.Element => {
 	const [edit, setEdit] = useState<inlineBoolean>(false);
 	const [valueEdit, setValueEdit] = useState<inlineString>(item);
+	const [tagValue, setTagValue] = useState<inlineString>(item);
 	const dispatch = useDispatch();
 
 	const notiesItem = {
@@ -28,12 +29,17 @@ const Note: FC<IPropsNote> = ({ item, specificId }): JSX.Element => {
 		setEdit(!edit);
 		//@ts-ignore
 		dispatch(saveNoties(notiesItem));
+		dispatch(createTag(tagValue));
 	};
 
 	return (
 		<div className="container__note">
 			{edit ? (
-				<EditInput value={valueEdit} onChange={setValueEdit} />
+				<EditInput
+					value={valueEdit}
+					onChange={setValueEdit}
+					setTagValue={setTagValue}
+				/>
 			) : (
 				<div className="container____content__note">{item}</div>
 			)}

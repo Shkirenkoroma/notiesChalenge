@@ -28,9 +28,14 @@ const notiesSlice = createSlice({
 			console.log('action in create tag', action)
 			//@ts-ignore
 			state.tags.push(action.payload)
+		},
+		deleteTag:(state, action) => {
+			state.tags = state.tags.filter(
+				(item: IPropsMapping) => item !== action.payload,
+			);
 		}
 	},
 });
 
 export const notiesReducer = notiesSlice.reducer;
-export const { getNoties, deleteNote, saveNoties, createTag } = notiesSlice.actions;
+export const { getNoties, deleteNote, saveNoties, createTag, deleteTag } = notiesSlice.actions;

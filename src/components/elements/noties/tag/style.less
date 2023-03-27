@@ -1,14 +1,22 @@
-.tagcontainer{
-   max-width: 200px;
-   width: 100%;
-   background-color: grey;
-   height: 50px;
-margin:30px;
-border-radius: 15px;
+.tagcontainer {
+	max-width: 200px;
+	width: 100%;
+	background-color: grey;
+	height: 50px;
+	margin: 30px;
+	border-radius: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
 }
 
-.tagcontainer__content{
-   padding: 15px;
-    
-    
+.tagcontainer__content {
+	padding: 15px;
+}
+
+.tagcontainer__deleteicon {
+	display: flex;
+   &:hover{
+      cursor: pointer;
+   }
 }
