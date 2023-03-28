@@ -17,4 +17,4 @@
 ![image](https://user-images.githubusercontent.com/61347452/228309109-7cc0cb6d-c9a7-44c0-8298-3b70e56391b4.png)
 ![image](https://user-images.githubusercontent.com/61347452/228309177-5e464e49-7feb-4070-94f8-2421aa5b1e7f.png)
 Реализована адаптивная версия проекта
-![image](https://user-images.githubusercontent.com/61347452/228309460-53079ad8-f153-4baf-a82c-65a971b22957.png)
+![image](https://user-images.githubusercontent.com/61347452/228310466-e2a85544-7e59-4ab7-aad7-c270dfe7806c.png)
