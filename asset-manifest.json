@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/notiesChalenge/static/css/main.e0f6ebaf.css",
-    "main.js": "/notiesChalenge/static/js/main.7fbcc584.js",
+    "main.css": "/notiesChalenge/static/css/main.dab512d1.css",
+    "main.js": "/notiesChalenge/static/js/main.1d75e763.js",
     "index.html": "/notiesChalenge/index.html",
-    "main.e0f6ebaf.css.map": "/notiesChalenge/static/css/main.e0f6ebaf.css.map",
-    "main.7fbcc584.js.map": "/notiesChalenge/static/js/main.7fbcc584.js.map"
+    "main.dab512d1.css.map": "/notiesChalenge/static/css/main.dab512d1.css.map",
+    "main.1d75e763.js.map": "/notiesChalenge/static/js/main.1d75e763.js.map"
   },
   "entrypoints": [
-    "static/css/main.e0f6ebaf.css",
-    "static/js/main.7fbcc584.js"
+    "static/css/main.dab512d1.css",
+    "static/js/main.1d75e763.js"
   ]
 }
