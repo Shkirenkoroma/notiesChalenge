@@ -1,15 +1,19 @@
 .tagcontainer {
 	max-width: 200px;
 	width: 100%;
-	background-color: grey;
 	height: 50px;
 	margin: 30px;
 	border-radius: 15px;
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
+	background-image: linear-gradient(60deg, #5aa4d8 50%, #c299ca 30%);
+	background-position: 100%;
+	background-size: 400%;
 	&:hover {
 		cursor: pointer;
+		transition: all 700ms;
+		background-position: 0;
 	}
 }
 
@@ -19,7 +23,13 @@
 
 .tagcontainer__deleteicon {
 	display: flex;
+	margin-top: 4px;
 	&:hover {
 		cursor: pointer;
 	}
+}
+
+.tagcontainer__content-text{
+	font-weight: 700;
+		font-family: "Edu NSW ACT Foundation", cursive;
 }

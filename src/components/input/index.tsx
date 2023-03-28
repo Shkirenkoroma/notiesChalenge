@@ -74,6 +74,7 @@ const Input: FC<IPropsInput> = ({
 				type="text"
 				onChange={handleNoties}
 				onKeyPress={handleChange}
+				placeholder="Введите текст"
 			/>
 			<Button
 				handleFunction={saveNoties}

@@ -34,7 +34,7 @@ const Note: FC<IPropsNote> = ({ item, specificId, light }): JSX.Element => {
 			dispatch(createTag(tagValue));
 		}
 	};
-console.log('item',item)
+
 	return (
 		<div className="container__note" >
 			{edit ? (
@@ -44,7 +44,7 @@ console.log('item',item)
 					setTagValue={setTagValue}
 				/>
 			) : (
-				<div className="container____content__note">{light(item)}</div>
+				<div className="container____content__note"><span className="container__content__note-text">{light(item)}</span></div>
 			)}
 			<div className="container____content__buttons">
 				<Button
@@ -54,13 +54,13 @@ console.log('item',item)
 				/>
 				{edit ? (
 					<Button
-						className="button__edit"
+						className="button"
 						handleFunction={saveEdit}
 						buttonName="Сохранить"
 					/>
 				) : (
 					<Button
-						className="button__edit"
+						className="button"
 						handleFunction={editItem}
 						buttonName="Редактировать"
 					/>

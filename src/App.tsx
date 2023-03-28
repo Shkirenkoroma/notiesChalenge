@@ -12,6 +12,7 @@ const App = () => {
 
 	return (
 		<div className="container">
+			<h1 className="container__title">Note Book</h1>
 			<div className="container__content">
 				<Input
 					setNoties={setNoties}
