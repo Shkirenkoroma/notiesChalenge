@@ -55,11 +55,7 @@ const NotiesLayout: FC<INotiesLayoutProps> = ({
 
 	return (
 		<div className="containerNoties">
-			{!!activeModal ? (
-				<div className="error">Возможно уже есть похожая заметка</div>
-			) : null}
 			<div>
-				{!!error ? <div className="errorPage">Введите значение</div> : null}
 				<Search setSortFieldInput={setSortFieldInput} />
 				<div className="tagBlock">
 					{tagsArray.map((item, index) => (
