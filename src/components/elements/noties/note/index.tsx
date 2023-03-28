@@ -1,12 +1,12 @@
-import Button from "components/button";
-import { FC } from "react";
-import { inlineBoolean, inlineString, IPropsNote } from "types";
 import "./style.less";
+import { FC } from "react";
 import { useDispatch } from "react-redux";
-import { createTag, deleteNote, saveNoties } from "redux/reducers";
 import { useState } from "react";
-
+import { createTag, deleteNote, saveNoties } from "redux/reducers";
+import Button from "components/button";
 import EditInput from "components/elements/edit";
+import { inlineBoolean, inlineString, IPropsNote } from "types";
+
 const Note: FC<IPropsNote> = ({ item, specificId, light }): JSX.Element => {
 	const [edit, setEdit] = useState<inlineBoolean>(false);
 	const [valueEdit, setValueEdit] = useState<inlineString>(item);
@@ -36,7 +36,7 @@ const Note: FC<IPropsNote> = ({ item, specificId, light }): JSX.Element => {
 	};
 
 	return (
-		<div className="container__note" >
+		<div className="container__note">
 			{edit ? (
 				<EditInput
 					value={valueEdit}
@@ -44,7 +44,9 @@ const Note: FC<IPropsNote> = ({ item, specificId, light }): JSX.Element => {
 					setTagValue={setTagValue}
 				/>
 			) : (
-				<div className="container____content__note"><span className="container__content__note-text">{light(item)}</span></div>
+				<div className="container____content__note">
+					<span className="container__content__note-text">{light(item)}</span>
+				</div>
 			)}
 			<div className="container____content__buttons">
 				<Button

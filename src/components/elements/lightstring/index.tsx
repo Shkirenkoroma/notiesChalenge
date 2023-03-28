@@ -1,22 +1,17 @@
-import  "./style.less";
-// import { IPropsLightString } from "types";
+import "./style.less";
 import { FC } from "react";
+import { ILightProps } from "types";
 
-const LightString: FC<any> = ({
-	searchValue,
-	string,
-}): JSX.Element => {
+const LightString: FC<ILightProps> = ({ searchValue, string }): JSX.Element => {
 	const regExp = new RegExp(`#${searchValue}`, "ig");
 	const matchValue = string.match(regExp);
-console.log('regExp', regExp)
-console.log('matchValue', matchValue)
+
 	return (
 		<div>
 			{!searchValue
 				? string
 				: matchValue
-         
-				? string.split(regExp).map((element:any, index:any, array:any) => {
+				? string.split(regExp).map((element, index, array) => {
 						if (index < array.length - 1) {
 							const lightstring = matchValue.shift();
 							return (

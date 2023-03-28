@@ -1,27 +1,23 @@
-import { noties, tags } from "redux/selectors";
 import "./style.less";
+import { FC, useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { noties, tags } from "redux/selectors";
 import Note from "./note";
-import { IPropsMapping } from "types";
 import Tag from "./tag";
-import { useCallback, useEffect, useState } from "react";
 import Search from "../search";
 import LightString from "../lightstring";
+import { inlineString, INotiesLayoutProps, IPropsMapping } from "types";
 
-const NotiesLayout = ({
-	setNoties,
-	setActiveModal,
+const NotiesLayout: FC<INotiesLayoutProps> = ({
 	activeModal,
 	error,
-}: any) => {
+}): JSX.Element => {
 	const notiesArray = useSelector(noties);
 	const tagsArray = useSelector(tags);
 	const [filteredArrays, setFilteredArrays] = useState<any | undefined>([]);
 	const [initialArrays, setInitialArrays] = useState<any | undefined>([]);
-	console.log("notiesArrays", filteredArrays);
 	const [sortField, setSortField] = useState<string>("");
 	const [sortFieldInput, setSortFieldInput] = useState<string>("");
-	console.log("sortField", sortField);
 
 	useEffect(() => {
 		setFilteredArrays(notiesArray);
@@ -29,43 +25,33 @@ const NotiesLayout = ({
 	}, [notiesArray]);
 
 	useEffect(() => {
-		console.log(localStorage.getItem("noties"));
-		console.log(localStorage.getItem("tags"));
-	}, []);
-
-	useEffect(() => {
-		const a = initialArrays.filter((el: any) => {
-			let d = el.value.split("#");
-			let first = `${d[1]}`;
-			if (first.includes(sortFieldInput)) {
+		const newSortingArray = initialArrays.filter((el: IPropsMapping) => {
+			let arraySplit = el.value.split("#");
+			let firstCharacter = `${arraySplit[1]}`;
+			if (firstCharacter.includes(sortFieldInput)) {
 				return el;
 			}
 		});
-		setFilteredArrays(a);
+		setFilteredArrays(newSortingArray);
 	}, [sortFieldInput]);
 
 	useEffect(() => {
-		const a = initialArrays.filter((el: any) => {
-			let d = el.value.split("#");
-			let first = d[1];
-			if (first === sortField) {
+		const newArrayBySort = initialArrays.filter((el: IPropsMapping) => {
+			let splitArray = el.value.split("#");
+			let firstElementByIndex = splitArray[1];
+			if (firstElementByIndex === sortField) {
 				return el;
 			}
 		});
-		setFilteredArrays(a);
+		setFilteredArrays(newArrayBySort);
 	}, [sortField]);
 
 	const light = useCallback(
-		(string: string) => {
-			console.log('string', string)
-			console.log('sortFieldInput', sortFieldInput)
+		(string: inlineString) => {
 			return <LightString searchValue={sortFieldInput} string={string} />;
 		},
 		[sortFieldInput],
 	);
-
-	
-
 
 	return (
 		<div className="containerNoties">
@@ -74,10 +60,10 @@ const NotiesLayout = ({
 			) : null}
 			<div>
 				{!!error ? <div className="errorPage">Введите значение</div> : null}
-				<Search setSortFieldInput={setSortFieldInput}/>
+				<Search setSortFieldInput={setSortFieldInput} />
 				<div className="tagBlock">
-					{tagsArray.map((item: any, index: any) => (
-						<Tag key={index} item={item} setSortField={setSortField}/>
+					{tagsArray.map((item, index) => (
+						<Tag key={index} item={item} setSortField={setSortField} />
 					))}
 				</div>
 				{filteredArrays.map((item: IPropsMapping, index: number) => (
@@ -85,9 +71,6 @@ const NotiesLayout = ({
 						key={index}
 						item={item.value}
 						specificId={item.id}
-						setNoties={setNoties}
-						setActiveModal={setActiveModal}
-						activeModal={activeModal}
 						light={light}
 					/>
 				))}

@@ -10,7 +10,7 @@
 	justify-content: center;
 	height: 110px;
 	flex-direction: column;
-};
+}
 
 .container____content__note {
 	max-width: 300px;
@@ -23,8 +23,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-};
-
+}
 
 .button__delete {
 	border-radius: 10px;
@@ -33,15 +32,29 @@
 	background-image: linear-gradient(60deg, #5aa4d8 50%, #c299ca 30%);
 	background-position: 100%;
 	background-size: 400%;
-	
 	&:hover {
 		cursor: pointer;
 		transition: all 700ms;
 		background-position: 0;
 	}
-};
+}
 
-.container__content__note-text{
+.container__content__note-text {
 	font-weight: 700;
-		font-family: "Edu NSW ACT Foundation", cursive;
+	font-family: "Edu NSW ACT Foundation", cursive;
+}
+
+@media (max-width: 768px) {
+	.button__delete {
+		margin-right: 35px;
+	}
+}
+
+@media (max-width: 560px) {
+	.button__delete {
+		margin-right: 20px;
+	}
+	.container__note {
+		max-width: 220px;
+	}
 }

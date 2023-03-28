@@ -14,24 +14,52 @@ export interface IPropsInput {
 export interface IPropsButton {
 	className: inlineString;
 	buttonName: inlineString;
-	handleFunction: (e: any) => void;
+	handleFunction: () => void;
 }
 
 export interface IState {
-	noties: inlineString[];
-	tags: inlineString[];
+	noties: { noties: inlineString[]; tags: inlineString[] };
 }
 
 export interface IPropsNote {
 	item: inlineString;
-	setNoties: (e: inlineString) => void;
-	key: inlineNumber;
-	setActiveModal: (e: inlineBoolean) => void;
-	activeModal: inlineBoolean;
 	specificId: number;
-	light:(e:string)=>any,
+	light: any;
+}
+export interface IEditInputProps {
+	value: inlineString;
+	onChange: (e: inlineString) => void;
+	setTagValue: (e: inlineString) => void;
+}
+
+export interface ILightProps {
+	searchValue: inlineString;
+	string: inlineString;
+}
+export interface ITagProps {
+	item: inlineString;
+	setSortField: (e: inlineString) => void;
+}
+
+export interface INotiesLayoutProps {
+	activeModal: inlineBoolean;
+	error: inlineBoolean;
 }
 export interface IPropsMapping {
 	id: inlineNumber;
 	value: inlineString;
 }
+
+export interface IPropsSearch {
+	setSortFieldInput: (e: inlineString) => void;
+}
+
+export type Note = {
+	id: inlineNumber;
+	value: inlineString;
+};
+
+export type NotiesState = {
+	noties: Note[];
+	tags: inlineString[];
+};

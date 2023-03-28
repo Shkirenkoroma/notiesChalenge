@@ -1,6 +1,6 @@
 import "./style.less";
 import { FC, useState } from "react";
-import { inlineString, IPropsInput } from "types";
+import { inlineString, IPropsInput, IPropsMapping } from "types";
 import Button from "components/button";
 import { createTag, getNoties } from "redux/reducers";
 import { useDispatch, useSelector } from "react-redux";
