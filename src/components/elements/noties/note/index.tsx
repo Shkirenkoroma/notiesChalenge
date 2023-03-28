@@ -7,7 +7,7 @@ import { createTag, deleteNote, saveNoties } from "redux/reducers";
 import { useState } from "react";
 
 import EditInput from "components/elements/edit";
-const Note: FC<IPropsNote> = ({ item, specificId }): JSX.Element => {
+const Note: FC<IPropsNote> = ({ item, specificId, light }): JSX.Element => {
 	const [edit, setEdit] = useState<inlineBoolean>(false);
 	const [valueEdit, setValueEdit] = useState<inlineString>(item);
 	const [tagValue, setTagValue] = useState<inlineString>(item);
@@ -34,7 +34,7 @@ const Note: FC<IPropsNote> = ({ item, specificId }): JSX.Element => {
 			dispatch(createTag(tagValue));
 		}
 	};
-
+console.log('item',item)
 	return (
 		<div className="container__note" >
 			{edit ? (
@@ -44,7 +44,7 @@ const Note: FC<IPropsNote> = ({ item, specificId }): JSX.Element => {
 					setTagValue={setTagValue}
 				/>
 			) : (
-				<div className="container____content__note">{item}</div>
+				<div className="container____content__note">{light(item)}</div>
 			)}
 			<div className="container____content__buttons">
 				<Button

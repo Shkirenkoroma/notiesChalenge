@@ -4,8 +4,9 @@ import { useSelector } from "react-redux";
 import Note from "./note";
 import { IPropsMapping } from "types";
 import Tag from "./tag";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Search from "../search";
+import LightString from "../lightstring";
 
 const NotiesLayout = ({
 	setNoties,
@@ -54,9 +55,16 @@ const NotiesLayout = ({
 		setFilteredArrays(a);
 	}, [sortField]);
 
+	const light = useCallback(
+		(string: string) => {
+			console.log('string', string)
+			console.log('sortFieldInput', sortFieldInput)
+			return <LightString searchValue={sortFieldInput} string={string} />;
+		},
+		[sortFieldInput],
+	);
 
-
-
+	
 
 
 	return (
@@ -69,7 +77,7 @@ const NotiesLayout = ({
 				<Search setSortFieldInput={setSortFieldInput}/>
 				<div className="tagBlock">
 					{tagsArray.map((item: any, index: any) => (
-						<Tag key={index} item={item} setSortField={setSortField} />
+						<Tag key={index} item={item} setSortField={setSortField}/>
 					))}
 				</div>
 				{filteredArrays.map((item: IPropsMapping, index: number) => (
@@ -80,6 +88,7 @@ const NotiesLayout = ({
 						setNoties={setNoties}
 						setActiveModal={setActiveModal}
 						activeModal={activeModal}
+						light={light}
 					/>
 				))}
 			</div>

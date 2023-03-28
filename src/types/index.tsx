@@ -29,6 +29,7 @@ export interface IPropsNote {
 	setActiveModal: (e: inlineBoolean) => void;
 	activeModal: inlineBoolean;
 	specificId: number;
+	light:(e:string)=>any,
 }
 export interface IPropsMapping {
 	id: inlineNumber;
