@@ -18,3 +18,4 @@
 ![image](https://user-images.githubusercontent.com/61347452/228309177-5e464e49-7feb-4070-94f8-2421aa5b1e7f.png)
 Реализована адаптивная версия проекта
 ![image](https://user-images.githubusercontent.com/61347452/228310466-e2a85544-7e59-4ab7-aad7-c270dfe7806c.png)
+ 
