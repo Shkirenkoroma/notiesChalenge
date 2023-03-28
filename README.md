@@ -1,20 +1,20 @@
 ### Live-версия доступна по ссылке: https://shkirenkoroma.github.io/notiesChalenge/
-Интерфейс реализованного проекта "Записная книга"
-![image](https://user-images.githubusercontent.com/61347452/228300856-54750dfe-fa60-4915-a7f0-dd943f9a5a30.png)
-Реализована возможность добавления, удаления и редактирования заметок, а также добавление тегов вместе с заметками после ввода симфола "#". Добавление срабатывает по клику на кнопку, а также по нажатию на "Enter"
-![image](https://user-images.githubusercontent.com/61347452/228301797-6d552c22-9272-4e00-bed6-bebe355bb887.png)
+Интерфейс реализованного проекта "Записная книга". В данном проекте были использованы библотеки redux для хранения состояния, redux toolkit для оптимизации работы redux, а также typescript для типизации самого проекта, стили проекта написаны с помощью препроцессора less.
+![image](https://user-images.githubusercontent.com/61347452/228307532-efa95efc-bba9-4180-a9e1-93479d7b5024.png)
+Реализована возможность добавления, удаления и редактирования заметок, а также добавление тегов вместе с заметками после ввода симфола "#". Добавление срабатывает по клику на кнопку, а также по нажатию на "Enter". Вместе с этим добавлена дополнительная проверка, которая запрещает добавлять одинаковые заметки с одинаковыми тегами, а также запрещено добавлять заметки, когда пустое поле ввода. 
+![image](https://user-images.githubusercontent.com/61347452/228307646-505d3559-e33a-4688-a07d-9ae6465081d8.png)
 Если вводить вместе с символом "#", сразу добавляет необходимый тег
-![image](https://user-images.githubusercontent.com/61347452/228302267-d5418862-0d02-454a-b1d0-1aa5d6955fb0.png) 
+![image](https://user-images.githubusercontent.com/61347452/228307757-f077189e-893d-400f-ada8-4a619ebf783e.png)
 Если тег не создан, его можно добавить при редактировании заметки.
-![image](https://user-images.githubusercontent.com/61347452/228302857-a9ba1210-bc87-4c4d-8bb0-8c52a5caca82.png)
-![image](https://user-images.githubusercontent.com/61347452/228303020-37bb05bd-0efa-4041-8830-64f7f0df39e5.png)
-![image](https://user-images.githubusercontent.com/61347452/228303089-e66c18eb-daeb-4989-a94d-d600c4dc6766.png)
+![image](https://user-images.githubusercontent.com/61347452/228307920-63fa08c5-1729-47ce-9a83-65fc853b818c.png)
+![image](https://user-images.githubusercontent.com/61347452/228308112-239aab19-8db1-4c00-bf8d-c4be190f321b.png)
+![image](https://user-images.githubusercontent.com/61347452/228308178-9d7b31ca-2d91-453c-88c7-be33aa5f40c8.png)
 Реализована сортировка заметок по тегу - при клике по определенному тегу
-![image](https://user-images.githubusercontent.com/61347452/228303761-67b50263-32d6-4f17-bda4-070f06fdb953.png)
-![image](https://user-images.githubusercontent.com/61347452/228303829-7b044096-25d7-4e94-8d77-feb4e3aeef2a.png)
-![image](https://user-images.githubusercontent.com/61347452/228303872-4827d0d5-63f6-4399-8b15-7c58317e8c8c.png)
+![image](https://user-images.githubusercontent.com/61347452/228308653-3c8a23b2-1034-4ade-bb67-759e28ee83b3.png)
+![image](https://user-images.githubusercontent.com/61347452/228308733-2f89c0c9-02ea-4ed9-8a23-3a3308550ef6.png)
+![image](https://user-images.githubusercontent.com/61347452/228308807-ec91225c-55f8-4966-9a65-8357312cc70c.png)
 Реализована фильтрация заметок при поиске необходимых заметок по названию тега, а также подсвечивание при этом похожих букв или символов
-![image](https://user-images.githubusercontent.com/61347452/228304702-f790eccf-07dc-4634-bbf7-81483d272c86.png)
-![image](https://user-images.githubusercontent.com/61347452/228305016-6f9c3dac-8b3d-434a-9728-bf886d8cb036.png)
-
-
+![image](https://user-images.githubusercontent.com/61347452/228309109-7cc0cb6d-c9a7-44c0-8298-3b70e56391b4.png)
+![image](https://user-images.githubusercontent.com/61347452/228309177-5e464e49-7feb-4070-94f8-2421aa5b1e7f.png)
+Реализована адаптивная версия проекта
+![image](https://user-images.githubusercontent.com/61347452/228310466-e2a85544-7e59-4ab7-aad7-c270dfe7806c.png)
