@@ -21,7 +21,7 @@ const App = () => {
 					error={error}
 					setError={setError}
 				/>
-				<NotiesLayout activeModal={activeModal} error={error} />
+				<NotiesLayout />
 			</div>
 		</div>
 	);

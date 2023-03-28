@@ -6,12 +6,9 @@ import Note from "./note";
 import Tag from "./tag";
 import Search from "../search";
 import LightString from "../lightstring";
-import { inlineString, INotiesLayoutProps, IPropsMapping } from "types";
+import { inlineString, IPropsMapping } from "types";
 
-const NotiesLayout: FC<INotiesLayoutProps> = ({
-	activeModal,
-	error,
-}): JSX.Element => {
+const NotiesLayout: FC = (): JSX.Element => {
 	const notiesArray = useSelector(noties);
 	const tagsArray = useSelector(tags);
 	const [filteredArrays, setFilteredArrays] = useState<any | undefined>([]);
